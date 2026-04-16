@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memoria das Cefaleias</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <section class="board-section">
+      <div id="gameBoard" class="board" aria-label="Tabuleiro do jogo de memoria"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel__stats">
+        <article>
+          <span class="label">Movimentos</span>
+          <strong id="moves">0</strong>
+        </article>
+        <article>
+          <span class="label">Pares</span>
+          <strong><span id="matches">0</span>/8</strong>
+        </article>
+        <article>
+          <span class="label">Status</span>
+          <strong id="status">Preparando jogo</strong>
+        </article>
+      </div>
+
+      <button id="restartButton" class="button" type="button">Novo jogo</button>
+    </section>
+
+    <section class="hero">
+      <div class="hero__content">
+        <span class="eyebrow">Jogo Educativo</span>
+        <h1>Memoria das Cefaleias</h1>
+        <p>
+          A avaliacao da cefaleia exige reconhecer padroes clinicos, identificar sinais de alarme e diferenciar
+          quadros primarios de causas secundarias potencialmente graves. Neste jogo, o aluno associa o diagnostico
+          a sua pista principal e, ao acertar o par, avanca para uma pergunta de tratamento, reforcando o raciocinio
+          clinico aplicado a cenarios de urgencia.
+        </p>
+        <p class="hero__credit">
+          Jogo originalmente criado pelo Prof. DeAssis Oliveira para a disciplina de Simulacoes em Urgencias da MFC.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <div id="quizOverlay" class="quiz" aria-hidden="true">
+    <div class="quiz__card">
+      <span class="quiz__eyebrow">Desafio de tratamento</span>
+      <h2 id="quizTitle">Pergunta</h2>
+      <p id="quizPrompt" class="quiz__prompt"></p>
+      <div id="quizOptions" class="quiz__options"></div>
+      <p id="quizFeedback" class="quiz__feedback" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <div id="victoryOverlay" class="victory" aria-hidden="true">
+    <div class="victory__card">
+      <div class="victory__pulse"></div>
+      <span class="victory__eyebrow">Fim de jogo</span>
+      <h2>Voce venceu!</h2>
+      <p>Todos os pares e desafios de tratamento foram concluidos com sucesso.</p>
+      <button id="playAgainButton" class="button" type="button">Jogar novamente</button>
+    </div>
+  </div>
+
+  <template id="cardTemplate">
+    <button class="card" type="button" aria-label="Carta virada para baixo">
+      <span class="card__inner">
+        <span class="card__face card__face--front">
+          <span class="card__badge"></span>
+          <span class="card__hint">Clique para revelar</span>
+        </span>
+        <span class="card__face card__face--back">
+          <span class="card__type"></span>
+          <span class="card__text"></span>
+        </span>
+        <span class="card__face card__face--matched" aria-hidden="true">
+          <span class="matched-icon">
+            <span class="matched-icon__check"></span>
+          </span>
+        </span>
+      </span>
+    </button>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
